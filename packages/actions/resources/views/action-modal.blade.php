@@ -42,11 +42,23 @@
     :wire:submit.prevent="$actionLivewireCallMountedActionName"
     :x-on:modal-closed="'if ($event.detail.id === ' . \Illuminate\Support\Js::from($actionModalId) . ') $wire.unmountAction(false)'"
 >
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_BEFORE) }}
+
     {{ $action->getModalContent() }}
 
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_AFTER) }}
+
     @if ($this->mountedActionHasSchema(mountedAction: $action))
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_BEFORE) }}
+
         {{ $this->getMountedActionSchema(mountedAction: $action) }}
+
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_AFTER) }}
     @endif
 
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_BEFORE) }}
+
     {{ $action->getModalContentFooter() }}
+
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_AFTER) }}
 </x-filament::modal>
