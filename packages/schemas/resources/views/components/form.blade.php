@@ -12,9 +12,37 @@
             ])
     }}
 >
+    @php
+        $childSchema = $getChildSchema();
+    @endphp
+
+    {{
+        \Filament\Support\Facades\FilamentView::renderHook(\Filament\Schemas\View\SchemasRenderHook::FORM_HEADER_BEFORE, data: [
+            'childSchema' => $childSchema,
+        ])
+    }}
+
     {{ $getChildSchema($schemaComponent::HEADER_SCHEMA_KEY) }}
 
-    {{ $getChildSchema() }}
+    {{
+        \Filament\Support\Facades\FilamentView::renderHook(\Filament\Schemas\View\SchemasRenderHook::FORM_HEADER_AFTER, data: [
+            'childSchema' => $childSchema,
+        ])
+    }}
+
+    {{ $childSchema }}
+
+    {{
+        \Filament\Support\Facades\FilamentView::renderHook(\Filament\Schemas\View\SchemasRenderHook::FORM_FOOTER_BEFORE, data: [
+            'childSchema' => $childSchema,
+        ])
+    }}
 
     {{ $getChildSchema($schemaComponent::FOOTER_SCHEMA_KEY) }}
+
+    {{
+        \Filament\Support\Facades\FilamentView::renderHook(\Filament\Schemas\View\SchemasRenderHook::FORM_FOOTER_AFTER, data: [
+            'childSchema' => $childSchema,
+        ])
+    }}
 </form>
