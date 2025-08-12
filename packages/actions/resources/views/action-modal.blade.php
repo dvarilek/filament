@@ -42,23 +42,23 @@
     :wire:submit.prevent="$actionLivewireCallMountedActionName"
     :x-on:modal-closed="'if ($event.detail.id === ' . \Illuminate\Support\Js::from($actionModalId) . ') $wire.unmountAction(false)'"
 >
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_BEFORE) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_BEFORE, scopes: static::class) }}
 
     {{ $action->getModalContent() }}
 
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_AFTER) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_CONTENT_AFTER, scopes: static::class) }}
 
     @if ($this->mountedActionHasSchema(mountedAction: $action))
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_BEFORE) }}
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_BEFORE, scopes: static::class) }}
 
         {{ $this->getMountedActionSchema(mountedAction: $action) }}
 
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_AFTER) }}
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_SCHEMA_AFTER, scopes: static::class) }}
     @endif
 
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_BEFORE) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_BEFORE, scopes: static::class) }}
 
     {{ $action->getModalContentFooter() }}
 
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_AFTER) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\Actions\View\ActionsRenderHook::ACTION_MODAL_FOOTER_AFTER, scopes: static::class) }}
 </x-filament::modal>
