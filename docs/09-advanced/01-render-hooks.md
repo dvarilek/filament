@@ -151,6 +151,36 @@ use Filament\Tables\View\TablesRenderHook;
 - `TablesRenderHook::TOOLBAR_COLUMN_MANAGER_TRIGGER_BEFORE` - Before the [column manager](../tables/columns/getting-started#toggling-column-visibility) trigger
 
 
+### Schemas render hooks
+
+```php
+use Filament\Schemas\View\SchemasRenderHook;
+```
+
+All these render hooks [can be scoped](#scoping-render-hooks) to any form Livewire component class. When using the Panel Builder, these classes might be View or Edit page of a resource.
+Additionally, all there render hooks receive the schema component `childSchema` data of type `Filament\Schemas\Schema` 
+
+- `SchemasRenderHook::FORM_FOOTER_AFTER` - After the form schema footer container
+- `SchemasRenderHook::FORM_FOOTER_BEFORE` - Before the form schema footer container
+- `SchemasRenderHook::FORM_HEADER_AFTER` - After the form schema header container
+- `SchemasRenderHook::FORM_HEADER_BEFORE` - Before the form schema header container
+
+
+### Actions render hooks
+
+```php
+use Filament\Actions\View\ActionsRenderHook;
+```
+
+All these render hooks [can be scoped](#scoping-render-hooks) to any form Livewire component class. When using the Panel Builder, these classes might be View, Edit, List or Manage page of a resource, or a relation manager.
+
+- `ActionsRenderHook::ACTION_MODAL_CONTENT_AFTER` - After the modal content
+- `ActionsRenderHook::ACTION_MODAL_CONTENT_BEFORE` - Before the modal content
+- `ActionsRenderHook::ACTION_MODAL_FOOTER_AFTER` - After the modal footer content
+- `ActionsRenderHook::ACTION_MODAL_FOOTER_BEFORE` - Before the modal footer content
+- `ActionsRenderHook::ACTION_MODAL_SCHEMA_AFTER` - After the modal schema 
+- `ActionsRenderHook::ACTION_MODAL_SCHEMA_BEFORE` - Before the modal schema
+
 ### Widgets render hooks
 
 ```php
